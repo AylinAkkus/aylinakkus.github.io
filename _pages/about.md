@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-Hello! I'm Aylin, a graduate student at ETH Zurich, currently working on my Master's thesis with [Prof. Ludwig Schmidt's group](https://people.csail.mit.edu/ludwigs/index.html) at Stanford. My research focuses on generating open-source datasets for computer use models.
+Hello! I'm Aylin, a graduate student at ETH Zurich, currently working on my thesis with [Prof. Ludwig Schmidt's group](https://people.csail.mit.edu/ludwigs/index.html) at Stanford on generating open-source datasets for computer use models.
 
 ### Latest blog post
 
@@ -27,11 +27,11 @@ No posts yet. Check back soon!
 ### Projects
 
 - **IDE Grounding Kit**: I developed a tool for [automatically generating agent training data](https://github.com/AylinAkkus/IDE-grounding-kit) for the Cursor IDE using its underlying Electron Browser.
-![Bounding Boxes on Cursor Screen](images\Cursor_bbox.png)
+![Bounding Boxes on Cursor Screen]({{ '/images/Cursor_bbox.png' | relative_url }})
 
 ### Personal
 
-In my free time I love to explain my research ideas to my (probably tired from coding) [boyfriend](https://mertunsall.github.io/) who is also an AI researcher! When I'm not immersed in the world of large language models, I enjoy learning about other cultures in ridiculous detail and experimenting with their culinary techniques, particularly those involving koji and fermentation like in this [Noma fermentation guide](https://www.wired.com/story/noma-guide-to-fermentation-book-review/)
+In my free time I love to explain my research ideas to my (probably tired from coding) [boyfriend](https://mertunsall.github.io/) who is also an AI researcher! When I'm not immersed in the world of large language models, I enjoy learning about other cultures in ridiculous detail and experimenting with their culinary techniques, particularly those involving koji and fermentation like in this [Noma fermentation guide](https://www.wired.com/story/noma-guide-to-fermentation-book-review/) or preparing a comprehensive reading class for Dostoevsky's Brothers Karamasov.
 
 ### Publications
 

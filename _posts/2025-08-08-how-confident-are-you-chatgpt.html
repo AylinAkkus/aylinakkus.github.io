@@ -1,0 +1,217 @@
+---
+layout: single
+title: "How Confident Are You, ChatGPT?"
+author_profile: true
+description: "Why calibration and uncertainty—not a universal verifier—are the core story behind recent reasoning breakthroughs."
+tags:
+  - RL
+  - Reasoning Models
+  - OpenAI
+date: 2025-08-08
+---
+
+<style>
+  /* Page-scoped, article-style typography */
+  .feature-article {
+    max-width: 720px;
+    margin: 0 auto;
+    font-family: "Georgia", "Times New Roman", serif;
+    line-height: 1.7;
+    font-size: 1.08rem;
+    color: var(--body-color, #1a1a1a);
+  }
+  .feature-article h1 {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+    font-weight: 700;
+  }
+  .feature-article .dek {
+    font-size: 1.15rem;
+    color: #444;
+    margin: 0 0 1.25rem;
+  }
+  .feature-article .byline {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+  .feature-article .lede {
+    font-size: 1.12rem;
+    margin-top: 1.25rem;
+  }
+  .feature-article .lede:first-letter {
+    float: left;
+    font-size: 3.6rem;
+    line-height: 1;
+    padding-right: 0.35rem;
+    padding-top: 0.18rem;
+    font-weight: 700;
+  }
+  .feature-article blockquote {
+    margin: 1.5rem 0;
+    padding: 0.1rem 1rem;
+    border-left: 3px solid #ccc;
+    color: #333;
+    font-style: italic;
+    background: rgba(0,0,0,0.02);
+  }
+  .feature-article figure {
+    margin: 2rem 0;
+  }
+  .feature-article figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+  .feature-article figcaption {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+  .feature-article .section-kicker {
+    margin-top: 2.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #888;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .feature-article h2 {
+    font-size: 1.5rem;
+    margin: 1.8rem 0 0.6rem;
+  }
+  .feature-article .pull-quote {
+    font-size: 1.15rem;
+    font-style: italic;
+    color: #333;
+    border-left: 3px solid #222;
+    margin: 2rem 0;
+    padding: 0.1rem 1rem;
+    background: rgba(0,0,0,0.025);
+  }
+  .feature-article a {
+    color: #0056b3;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+</style>
+
+<article class="feature-article">
+  <header>
+    <h1>How Confident Are You, ChatGPT?</h1>
+    <p class="dek"><strong>TL;DR:</strong> I present reasons to doubt that the key to OpenAI’s IMO gold was a universal verifier. Instead, I argue that uncertainty estimation and calibration are central to this research direction and likely to shape future products.</p>
+    <p class="byline">By Aylin Güliz Akkus</p>
+  </header>
+
+  <p class="lede">
+    Recently, both OpenAI and DeepMind entered their models in the IMO 2025 and achieved gold medals by correctly solving problems 1 through 5. Problem 6 remained unsolved by both models. Interestingly, the solutions were written in informal natural language, not in formal systems like Lean. The latter approach—used by Harmonic’s Aristotle <a href="https://harmonic.fun/news">Gold</a> and Bytedance’s Seed Prover <a href="https://seed.bytedance.com/en/blog/bytedance-seed-prover-achieves-silver-medal-score-in-imo-2025">Silver</a>—has an important advantage: compilers provide verifiability. Informal reasoning risks hallucination. Yet the fact that OpenAI and DeepMind produced correct solutions, later verified by human experts, highlights something important: progress in supervising tasks that are hard to verify.
+  </p>
+
+  <p>
+    Noam Brown (one of the three OpenAI employees who worked on the IMO project) said in an <a href="https://www.youtube.com/watch?v=EEIPtofVe2Q&list=PLOhHNjZItNnMm5tdW61JpnyxeYH5NDDx8">interview with Sequoia’s Sonya Huang</a>:
+  </p>
+
+  <blockquote>
+    “We observed progress on hard-to-verify tasks, which was a departure from our previous focus on verifiable rewards, and this improvement is what excited us. [...] Initially, when language models came out, the challenge was getting them to reason. <strong>Once they could reason, the next challenge was getting them to reason on hard-to-verify tasks.</strong> Now that they can reason on hard-to-verify tasks, I think the next hurdle will be getting them to come up with novel questions.”
+  </blockquote>
+
+  <p>
+    Some speculated that OpenAI built a <a href="https://www.theinformation.com/articles/universal-verifiers-openais-secret-weapon">universal verifier</a>—an LLM capable of judging outputs across domains. But such verifiers are imperfect, just like the proving model itself. This opens the door to reward hacking: the model learns to fool the verifier rather than solve the problem.
+  </p>
+
+  <p>
+    Lean, by contrast, is a limited but <em>perfect</em> verifier in its domain: it requires formal language, but the resulting reward signal is always correct. In what follows, I present arguments that calibration—not a universal verifier—belongs at the center of recent progress.
+  </p>
+
+  <h2>Calibration, Not Just Verification</h2>
+  <p>
+    Calibration refers to how well a model’s predicted confidence scores match the actual likelihood of being correct. A well-calibrated model that says it’s 80% confident should be right about 80% of the time. Overconfidence, by contrast, means outputting an answer with high confidence that is actually wrong. <strong>Hallucination</strong> is a result of overconfident models. Researchers from FAIR at Meta found that <a href="https://openreview.net/pdf?id=kYbojsAOBj">reasoning models trained with RL tend to become overconfident</a> after RL training.
+  </p>
+
+  <p>
+    The calibration hypothesis first came from this post by Alexander Wei:
+  </p>
+
+  <figure>
+    <img src="{{ '/images/Alexander_Wei_X_Post.png' | relative_url }}" alt="Alexander Wei's X post about calibration" />
+    <figcaption>Alexander Wei’s post that inspired the calibration framing.</figcaption>
+  </figure>
+
+  <p>
+    Listening to the interview again, <strong>uncertainty is all over the conversation</strong>—and even featured in the GPT‑5 launch. As Brown notes:
+  </p>
+
+  <blockquote>
+    “We allocated significant computational resources to problem six, but it was encouraging to see that <strong>the model didn’t attempt to fabricate a solution and instead acknowledged its inability to solve it</strong> ... <strong>This level of self-awareness is remarkable</strong>, especially considering that earlier models would often try to be helpful by generating incorrect answers.”
+  </blockquote>
+
+  <blockquote>
+    “Although it still can’t solve the problem, <strong>it now recognizes its inability to do so</strong>, which I consider a significant improvement.”
+  </blockquote>
+
+  <blockquote>
+    “One of the intriguing aspects of these models is their ability to express uncertainty or confidence in natural language throughout the problem-solving process. [...] On problem six, <strong>the model frequently expressed difficulty</strong>, with phrases like ‘No progress,’ ‘Hard,’ and ‘Seems hard.’”
+  </blockquote>
+
+  <p class="pull-quote">
+    Evidence points away from a separate, universal verifier and toward uncertainty estimation that’s <em>absorbed into the model itself</em>.
+  </p>
+
+  <h2 id="rl-for-uncertainty-training">RL for Uncertainty Training</h2>
+  <p>
+    My hypothesis: the OpenAI team saw promising signs of self-assessed confidence and then amplified this behavior with RL. The idea is to reward the model for correct answers with high confidence—and penalize it when it’s confidently wrong. A <a href="https://www.arxiv.org/pdf/2507.16806">recent paper by MIT researchers</a> explores an RL calibration approach in more detail. The likely effect is to encourage deeper reasoning and develop an implicit internal verifier to assess uncertainty before finalizing an answer.
+  </p>
+
+  <h2 id="parallel-thinking">Parallel Thinking and Multi‑Agent Systems</h2>
+  <p>
+    Another key factor in the IMO was scaling up reasoning through parallel computation. Both teams worked under the same 4.5‑hour constraint as human contestants, but models can explore many branches in parallel. That makes comparisons to human time imperfect; total compute is what really matters—a detail neither team disclosed.
+  </p>
+
+  <p>
+    DeepMind emphasized this in their <a href="https://deepmind.google/discover/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/">statement</a>:
+  </p>
+  <blockquote>
+    “We achieved this year’s result using an advanced version of Gemini Deep Think [...] that incorporates some of our latest research techniques, including parallel thinking. This setup enables the model to simultaneously explore and combine multiple possible solutions before giving a final answer, rather than pursuing a single, linear chain of thought.”
+  </blockquote>
+
+  <p>
+    OpenAI, meanwhile, highlighted multi‑agent systems:
+  </p>
+  <blockquote>
+    “In addition to having the model think for extended periods and make progress on difficult‑to‑verify tasks, this also involved scaling up parallel compute, which has a multi‑agent component. While we cannot go into too much detail about the exact techniques, this was certainly one way we were able to scale up test‑time compute for the IMO. Regarding the multi‑agent and parallel compute scaling, we prioritized generality in our techniques.”
+  </blockquote>
+
+  <p>
+    The challenge with parallelization is avoiding overconfident hallucinations across multiple agents. Without proper calibration, it’s hard to select the correct answer. With confidence training, the model can withhold answers until it’s certain—or output useful confidence scores to rank candidate solutions—enabling better use of parallel compute by choosing the highest‑confidence result.
+  </p>
+
+  <h3>Speculations</h3>
+  <p>
+    More advanced setups may use a Manager–Worker architecture: one agent proposes diverse proof strategies that workers develop. This encourages exploration and reduces duplication. In a DeepMind video, mathematician Michel van Garrel notes:
+  </p>
+  <blockquote>
+    “When I was thinking about solving that question, I was thinking about three different things, three different ideas, but it seems that DeepThink was thinking about 20 or 100.”
+  </blockquote>
+
+  <p>
+    In OpenAI’s case, behavior suggests a modular strategy: problems are broken into lemmas, which are solved independently. Agents can share proven subparts, allowing others to compose a full proof—consistent with DeepMind’s comments about “combining multiple possible solutions.”
+  </p>
+
+  <figure>
+    <img src="{{ '/images/lemma_openai_problem_1.png' | relative_url }}" alt="Excerpt from OpenAI’s Problem 1 proof showing lemma structure" />
+    <figcaption>Excerpt from OpenAI’s Problem 1 proof (illustrative lemma structure).</figcaption>
+  </figure>
+
+  <h2>GPT‑5 and the Push for Reliability</h2>
+  <p>
+    Uncertainty estimation seems to also have played a role in the recent GPT-5 release. From the recent [GPT-5 announcement](https://openai.com/index/introducing-gpt-5/):
+    <blockquote>
+        "We’ve particularly invested in making our models more reliable when reasoning on complex, open-ended questions [...] across all of these benchmarks, “GPT‑5 thinking” shows a sharp drop in hallucinations—about six times fewer than o3—marking a clear leap forward in producing consistently accurate long-form content."
+    </blockquote>
+  </p>
+</article>
+
+
