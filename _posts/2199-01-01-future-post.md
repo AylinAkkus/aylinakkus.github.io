@@ -1,17 +1,18 @@
 ---
-title: 'Future Blog Post'
+title: 'How confident are you, ChatGPT?'
 date: 2199-01-01
-permalink: /posts/2012/08/blog-post-4/
+permalink: /posts/2025/08/blog-post-1/
 tags:
   - RL
-  - Thoughts
+  - Reasoning Models
+  - OpenAI
 ---
 
 # How confident are you, ChatGPT?
 
 **TL;DR:** I present reason to doubt that the key to OpenAI’s IMO Gold was a universal verifier. Instead, I argue that uncertainty estimation and calibration are central to this research direction and likely to shape future OpenAI products.
 
-Recently, both OpenAI and DeepMind entered their models in the IMO 2025 and achieved gold medals by correctly solving problems 1 through 5. Problem 6 remained unsolved by both models. Interestingly, the solutions were written in informal natural language, not in formal systems like Lean. The latter approach was adopted by Harmonic [Gold](https://harmonic.fun/news) and Bytedance [Silver](https://seed.bytedance.com/en/blog/bytedance-seed-prover-achieves-silver-medal-score-in-imo-2025) and has an important advantage: while formal languages offer verifiability via compilers, informal reasoning risks hallucination. Yet, the fact that OpenAI and DeepMind produced correct solutions— later verified by human experts—highlights something very important: progress in supervising tasks that are hard to verify.
+Recently, both OpenAI and DeepMind entered their models in the IMO 2025 and achieved gold medals by correctly solving problems 1 through 5. Problem 6 remained unsolved by both models. Interestingly, the solutions were written in informal natural language, not in formal systems like Lean. The latter approach was adopted by Harmonic's Aristotle [Gold](https://harmonic.fun/news) and Bytedance's Seed Prover [Silver](https://seed.bytedance.com/en/blog/bytedance-seed-prover-achieves-silver-medal-score-in-imo-2025) and has an important advantage: while formal languages offer verifiability via compilers, informal reasoning risks hallucination. Yet, the fact that OpenAI and DeepMind produced correct solutions— later verified by human experts—highlights something very important: progress in supervising tasks that are hard to verify.
 
 Noam Brown (one of the three OpenAI employees who worked on the IMO project) said in an [interview with Sequoia’s Sonya Huang](https://www.youtube.com/watch?v=EEIPtofVe2Q&list=PLOhHNjZItNnMm5tdW61JpnyxeYH5NDDx8):
 
