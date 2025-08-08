@@ -104,7 +104,7 @@ excerpt: "<strong>TL;DR:</strong> The key to OpenAI’s IMO gold likely wasn’t
   <p class="dek"><strong>TL;DR:</strong> I present reasons to doubt that the key to OpenAI’s IMO gold was a universal verifier. Instead, I argue that uncertainty estimation and calibration are central to this research direction and likely to shape future OpenAI products.</p>
 
   <p class="lede">
-    Recently, both OpenAI and DeepMind entered their models in the International Mathematical Olympiad (IMO) competition in 2025 and achieved gold medals by correctly solving problems 1 through 5. Problem 6 remained unsolved by both models. Interestingly, the solutions were written in <strong>informal natural language</strong>, not in formal systems like Lean. The latter approach—used by Harmonic’s Aristotle <a href="https://harmonic.fun/news">Gold</a> and Bytedance’s Seed Prover <a href="https://seed.bytedance.com/en/blog/bytedance-seed-prover-achieves-silver-medal-score-in-imo-2025">Silver</a>—has an important advantage: compilers provide verifiability. Informal reasoning risks hallucination. Yet the fact that OpenAI and DeepMind produced correct solutions, later verified by human experts, highlights something important: <strong>progress in supervising tasks that are hard to verify.</strong>
+    Recently, both OpenAI and DeepMind entered their models in the International Mathematical Olympiad (IMO) competition in 2025 and achieved gold medals by correctly solving problems 1 through 5. Problem 6 remained unsolved by both models. Interestingly, the solutions were written in <strong>informal natural language</strong>, not in formal systems like Lean. The latter approach—used by Harmonic’s Aristotle <a href="https://harmonic.fun/news">Gold</a> and Bytedance’s Seed Prover <a href="https://seed.bytedance.com/en/blog/bytedance-seed-prover-achieves-silver-medal-score-in-imo-2025">Silver</a>—has an important advantage: Lean's compiler provides verifiability. Informal reasoning risks hallucination. Yet the fact that OpenAI and DeepMind produced correct solutions, later verified by human experts, highlights something important: <strong>progress in supervising tasks that are hard to verify.</strong>
   </p>
 
   <p>
@@ -112,7 +112,10 @@ excerpt: "<strong>TL;DR:</strong> The key to OpenAI’s IMO gold likely wasn’t
   </p>
 
   <blockquote>
-    “We observed progress on hard-to-verify tasks, which was a departure from our previous focus on verifiable rewards, and this improvement is what excited us. [...] Initially, when language models came out, the challenge was getting them to reason. <strong>Once they could reason, the next challenge was getting them to reason on hard-to-verify tasks.</strong> Now that they can reason on hard-to-verify tasks, I think the next hurdle will be getting them to come up with novel questions.”
+    “We observed progress on hard-to-verify tasks, which was a departure from our previous focus on verifiable rewards, and this improvement is what excited us. [...] <br>
+    Initially, when language models came out, the challenge was getting them to reason. <br>
+    <strong>Once they could reason, the next challenge was getting them to reason on hard-to-verify tasks.</strong> <br>
+    Now that they can reason on hard-to-verify tasks, I think the next hurdle will be getting them to come up with novel questions.”
   </blockquote>
 
   <p>
@@ -120,7 +123,8 @@ excerpt: "<strong>TL;DR:</strong> The key to OpenAI’s IMO gold likely wasn’t
   </p>
 
   <p>
-    Lean, by contrast, is a limited but <em>perfect</em> verifier in its domain: it requires formal language, but the resulting reward signal is always correct. In what follows, I present arguments that <strong>calibration</strong>—not a universal verifier—belongs at the center of recent progress.
+    Lean, by contrast, is a limited but <em>perfect</em> verifier in its domain: it requires formal language, can only be applied to mathematics, but the resulting reward signal is always correct.<br>
+    In what follows, I present arguments that <strong>calibration</strong>—not a universal verifier—belongs at the center of recent progress.
   </p>
 
   <h2>Calibration, Not Just Verification</h2>
@@ -129,7 +133,7 @@ excerpt: "<strong>TL;DR:</strong> The key to OpenAI’s IMO gold likely wasn’t
   </p>
 
   <p>
-    The initial idea for my hypothesis that this is what is behind OpenAIs progress on hard-to-verify tasks came when seeing this post of Alexander Wei on X:
+    The initial idea for my hypothesis that this technique is what is behind OpenAIs progress on hard-to-verify tasks came when seeing this post of Alexander Wei on X:
   </p>
 
   <figure>
