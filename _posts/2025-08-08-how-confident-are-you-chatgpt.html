@@ -8,6 +8,7 @@ tags:
   - Reasoning Models
   - OpenAI
 date: 2025-08-08
+excerpt: "<strong>TL;DR:</strong> The key to OpenAI’s IMO gold likely wasn’t a universal verifier. Calibration and uncertainty estimation are central, and will shape future products."
 ---
 
 <style>
@@ -100,11 +101,7 @@ date: 2025-08-08
 </style>
 
 <article class="feature-article">
-  <header>
-    <h1>How Confident Are You, ChatGPT?</h1>
-    <p class="dek"><strong>TL;DR:</strong> I present reasons to doubt that the key to OpenAI’s IMO gold was a universal verifier. Instead, I argue that uncertainty estimation and calibration are central to this research direction and likely to shape future products.</p>
-    <p class="byline">By Aylin Güliz Akkus</p>
-  </header>
+  <p class="dek"><strong>TL;DR:</strong> I present reasons to doubt that the key to OpenAI’s IMO gold was a universal verifier. Instead, I argue that uncertainty estimation and calibration are central to this research direction and likely to shape future products.</p>
 
   <p class="lede">
     Recently, both OpenAI and DeepMind entered their models in the IMO 2025 and achieved gold medals by correctly solving problems 1 through 5. Problem 6 remained unsolved by both models. Interestingly, the solutions were written in informal natural language, not in formal systems like Lean. The latter approach—used by Harmonic’s Aristotle <a href="https://harmonic.fun/news">Gold</a> and Bytedance’s Seed Prover <a href="https://seed.bytedance.com/en/blog/bytedance-seed-prover-achieves-silver-medal-score-in-imo-2025">Silver</a>—has an important advantage: compilers provide verifiability. Informal reasoning risks hallucination. Yet the fact that OpenAI and DeepMind produced correct solutions, later verified by human experts, highlights something important: progress in supervising tasks that are hard to verify.
