@@ -2,7 +2,7 @@
 layout: single
 title: "How Confident Are You, ChatGPT?"
 author_profile: true
-description: "Why calibration and uncertainty—not a universal verifier—are the core story behind recent reasoning breakthroughs."
+description: "Why calibration and uncertainty might be at the core of OpenAI's recent reasoning breakthroughs."
 tags:
   - RL
   - Reasoning Models
@@ -101,10 +101,10 @@ excerpt: "<strong>TL;DR:</strong> The key to OpenAI’s IMO gold likely wasn’t
 </style>
 
 <article class="feature-article">
-  <p class="dek"><strong>TL;DR:</strong> I present reasons to doubt that the key to OpenAI’s IMO gold was a universal verifier. Instead, I argue that uncertainty estimation and calibration are central to this research direction and likely to shape future products.</p>
+  <p class="dek"><strong>TL;DR:</strong> I present reasons to doubt that the key to OpenAI’s IMO gold was a universal verifier. Instead, I argue that uncertainty estimation and calibration are central to this research direction and likely to shape future OpenAI products.</p>
 
   <p class="lede">
-    Recently, both OpenAI and DeepMind entered their models in the IMO 2025 and achieved gold medals by correctly solving problems 1 through 5. Problem 6 remained unsolved by both models. Interestingly, the solutions were written in informal natural language, not in formal systems like Lean. The latter approach—used by Harmonic’s Aristotle <a href="https://harmonic.fun/news">Gold</a> and Bytedance’s Seed Prover <a href="https://seed.bytedance.com/en/blog/bytedance-seed-prover-achieves-silver-medal-score-in-imo-2025">Silver</a>—has an important advantage: compilers provide verifiability. Informal reasoning risks hallucination. Yet the fact that OpenAI and DeepMind produced correct solutions, later verified by human experts, highlights something important: progress in supervising tasks that are hard to verify.
+    Recently, both OpenAI and DeepMind entered their models in the International Mathematical Olympiad (IMO) competition in 2025 and achieved gold medals by correctly solving problems 1 through 5. Problem 6 remained unsolved by both models. Interestingly, the solutions were written in informal natural language, not in formal systems like Lean. The latter approach—used by Harmonic’s Aristotle <a href="https://harmonic.fun/news">Gold</a> and Bytedance’s Seed Prover <a href="https://seed.bytedance.com/en/blog/bytedance-seed-prover-achieves-silver-medal-score-in-imo-2025">Silver</a>—has an important advantage: compilers provide verifiability. Informal reasoning risks hallucination. Yet the fact that OpenAI and DeepMind produced correct solutions, later verified by human experts, highlights something important: progress in supervising tasks that are hard to verify.
   </p>
 
   <p>
@@ -129,7 +129,7 @@ excerpt: "<strong>TL;DR:</strong> The key to OpenAI’s IMO gold likely wasn’t
   </p>
 
   <p>
-    The calibration hypothesis first came from this post by Alexander Wei:
+    The initial idea for my hypothesis that this is what is behind OpenAIs progress on hard-to-verify tasks came when seeing this post of Alexander Wei on X:
   </p>
 
   <figure>
@@ -138,7 +138,8 @@ excerpt: "<strong>TL;DR:</strong> The key to OpenAI’s IMO gold likely wasn’t
   </figure>
 
   <p>
-    Listening to the interview again, <strong>uncertainty is all over the conversation</strong>—and even featured in the GPT‑5 launch. As Brown notes:
+    And actually after listening through the podcast again, it seems that <strong>uncertainty is all over the conversation</strong> (and also in the GPT5 launch, more later)!
+    As Brown notes:
   </p>
 
   <blockquote>
@@ -154,47 +155,49 @@ excerpt: "<strong>TL;DR:</strong> The key to OpenAI’s IMO gold likely wasn’t
   </blockquote>
 
   <p class="pull-quote">
-    Evidence points away from a separate, universal verifier and toward uncertainty estimation that’s <em>absorbed into the model itself</em>.
+    Here we can see strong evidence against the universal verifier theory, because it does not seem that the model has access to a verifier, but instead the <strong>verification was absorbed into the model itself.</strong>
   </p>
 
   <h2 id="rl-for-uncertainty-training">RL for Uncertainty Training</h2>
   <p>
-    My hypothesis: the OpenAI team saw promising signs of self-assessed confidence and then amplified this behavior with RL. The idea is to reward the model for correct answers with high confidence—and penalize it when it’s confidently wrong. A <a href="https://www.arxiv.org/pdf/2507.16806">recent paper by MIT researchers</a> explores an RL calibration approach in more detail. The likely effect is to encourage deeper reasoning and develop an implicit internal verifier to assess uncertainty before finalizing an answer.
+    My hypothesis is that the team saw that the model initially showed a promising ability to estimate its own confidence in its reasoning, which led the team to explore ways to bring out this behavior in postraining with RL. This involved developing a novel RL setup: rewarding the model for correct answers with high confidence, and penalizing it when it confidently produces incorrect responses.  A recent paper by researchers at MIT explores such an RL calibration approach in <a href="https://www.arxiv.org/pdf/2507.16806">more detail</a>. This training then likely encouraged the model to engage in deeper reasoning, developing an implicit internal verifier to assess uncertainty which explains why before finalizing an answer.
   </p>
 
   <h2 id="parallel-thinking">Parallel Thinking and Multi‑Agent Systems</h2>
   <p>
-    Another key factor in the IMO was scaling up reasoning through parallel computation. Both teams worked under the same 4.5‑hour constraint as human contestants, but models can explore many branches in parallel. That makes comparisons to human time imperfect; total compute is what really matters—a detail neither team disclosed.
-  </p>
+    Another crucial factor in solving the IMO for both OpenAI and DeepMind was scaling up reasoning through parallel computation. This was particularly important as both teams aimed to solve problems under the same 4.5-hour time constraint as human contestants. However, since models can run multiple processes simultaneously, comparing against human time is somewhat misleading—what truly matters is the total compute used, a detail neither team disclosed.
+    On the matter of parallel thinking DeepMind highlighted this in their <a href="https://deepmind.google/discover/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/"></a>statement</a>:
 
-  <p>
-    DeepMind emphasized this in their <a href="https://deepmind.google/discover/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/">statement</a>:
   </p>
   <blockquote>
-    “We achieved this year’s result using an advanced version of Gemini Deep Think [...] that incorporates some of our latest research techniques, including parallel thinking. This setup enables the model to simultaneously explore and combine multiple possible solutions before giving a final answer, rather than pursuing a single, linear chain of thought.”
+    “We achieved this year’s result using an advanced version of Gemini Deep Think [..] that incorporates some of our latest research techniques, including parallel thinking. This setup enables the model to simultaneously explore and combine multiple possible solutions before giving a final answer, rather than pursuing a single, linear chain of thought.”
   </blockquote>
 
   <p>
-    OpenAI, meanwhile, highlighted multi‑agent systems:
+    OpenAI, on the other hand, emphasized the role of multi-agent systems:
   </p>
   <blockquote>
-    “In addition to having the model think for extended periods and make progress on difficult‑to‑verify tasks, this also involved scaling up parallel compute, which has a multi‑agent component. While we cannot go into too much detail about the exact techniques, this was certainly one way we were able to scale up test‑time compute for the IMO. Regarding the multi‑agent and parallel compute scaling, we prioritized generality in our techniques.”
+    “I believe both of you are on the multi-agent team. Please help me understand the role that multi-agent systems play in this process.”
+    “In addition to having the model think for extended periods and make progress on difficult-to-verify tasks, this also involved scaling up parallel compute, which has a multi-agent component.
+     While we cannot go into too much detail about the exact techniques, this was certainly one way we were able to scale up test-time compute for the IMO.
+     Regarding the multi-agent and parallel compute scaling, we prioritized generality in our techniques.”
   </blockquote>
 
   <p>
-    The challenge with parallelization is avoiding overconfident hallucinations across multiple agents. Without proper calibration, it’s hard to select the correct answer. With confidence training, the model can withhold answers until it’s certain—or output useful confidence scores to rank candidate solutions—enabling better use of parallel compute by choosing the highest‑confidence result.
+    The challenge with parallelization is to avoid overconfident hallucinations from multiple agents. Without proper calibration, this makes it difficult to select the correct answer. But with the method of confidence training we mentioned it, the model would instead either withhold an answer until it's sure, or output a confidence score that helps rank candidate solutions—enabling better use of parallel compute by choosing the highest-confidence result.
   </p>
 
   <h3>Speculations</h3>
   <p>
-    More advanced setups may use a Manager–Worker architecture: one agent proposes diverse proof strategies that workers develop. This encourages exploration and reduces duplication. In a DeepMind video, mathematician Michel van Garrel notes:
+    More advanced setups may use a Manager–Worker architecture: one agent proposes diverse proof strategies which are then distributed to workers for development. This encourages exploration and reduces duplication between workers. In a <a href="https://www.youtube.com/watch?v=QoXRfTb7ves">video by Google DeepMind</a> the mathematician Michel van Garrel with access to the model states:
+
   </p>
   <blockquote>
-    “When I was thinking about solving that question, I was thinking about three different things, three different ideas, but it seems that DeepThink was thinking about 20 or 100.”
+    “When I was thinking about solving that question, I was thinking about three different things, three different ideas, but it seems that that DeepThink was thinking about 20 or 100.”
   </blockquote>
 
   <p>
-    In OpenAI’s case, behavior suggests a modular strategy: problems are broken into lemmas, which are solved independently. Agents can share proven subparts, allowing others to compose a full proof—consistent with DeepMind’s comments about “combining multiple possible solutions.”
+    In OpenAI's case, model behavior suggests a modular strategy: problems are broken into lemmas, which are solved independently. Agents could then share proven subparts, allowing others to compose a full proof (see DeepMind’s comment on “combining multiple possible solutions.”)
   </p>
 
   <figure>

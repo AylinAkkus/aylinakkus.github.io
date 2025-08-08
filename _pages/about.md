@@ -27,7 +27,7 @@ No posts yet. Check back soon!
 ### Projects
 
 - **IDE Grounding Kit**: I developed a tool for [automatically generating agent training data](https://github.com/AylinAkkus/IDE-grounding-kit) for the Cursor IDE using its underlying Electron Browser.
-![Bounding Boxes on Cursor Screen]({{ '/images/Cursor_bbox.png' | relative_url }})
+![Bounding Boxes on Cursor Screen]({{ '/images/Cursor_bbox.png' | relative_url }}){: style="max-width: 420px; display: block; margin: 0.5rem auto; height: auto;" }
 
 ### Personal
 
