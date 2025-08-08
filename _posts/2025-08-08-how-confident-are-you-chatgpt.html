@@ -147,24 +147,28 @@ excerpt: "<strong>TL;DR:</strong> The key to OpenAI’s IMO gold likely wasn’t
   </p>
 
   <blockquote>
-    “We allocated significant computational resources to problem six, but it was encouraging to see that <strong>the model didn’t attempt to fabricate a solution and instead acknowledged its inability to solve it</strong> ... <strong>This level of self-awareness is remarkable</strong>, especially considering that earlier models would often try to be helpful by generating incorrect answers.”
+    “We allocated significant computational resources to problem six, but <strong>it was encouraging to see that the model didn't attempt to fabricate a solution and instead acknowledged its inability to solve it</strong>. <br>
+    While it's somewhat disappointing to see the model work so hard only to conclude it has no answer, it's reassuring that it can recognize its limitations. <br>
+    <strong>This level of self-awareness in the model is remarkable, especially considering that earlier models would often try to be helpful by generating incorrect answers.</strong>”
   </blockquote>
 
   <blockquote>
-    “Although it still can’t solve the problem, <strong>it now recognizes its inability to do so</strong>, which I consider a significant improvement.”
-  </blockquote>
-
-  <blockquote>
-    “One of the intriguing aspects of these models is their ability to express uncertainty or confidence in natural language throughout the problem-solving process. [...] On problem six, <strong>the model frequently expressed difficulty</strong>, with phrases like ‘No progress,’ ‘Hard,’ and ‘Seems hard.’”
+    One of the intriguing aspects of these models is their ability to express uncertainty or confidence in natural language throughout the problem-solving process, even when the proofs themselves are beyond my comprehension. <br>
+    The model uses words that indicate its level of certainty, such as frequently saying "good" when confident or using numerous question marks when unsure. <br>
+    It's interesting that I can follow the model's thought process and gauge its confidence in its progress, even if I can't determine the correctness of its solutions. <br>
+    You often encounter the dreaded "seems hard" response. <br>
+    That occurred on problem six. <br>
+    The model frequently expressed difficulty. <br>
+    It would respond with phrases like "No progress," "Hard," "Seems hard," and "Keep going."
   </blockquote>
 
   <p class="pull-quote">
-    Here we can see strong evidence against the universal verifier theory, because it does not seem that the model has access to a verifier, but instead the <strong>verification was absorbed into the model itself.</strong>
+    These words can indeed even be observed in the outputs OpenAI has released <a href="https://github.com/aw31/openai-imo-2025-proofs">here</a>. And here we can see strong evidence against the universal verifier theory, because it does not seem that the model has access to a verifier, but instead the <strong>verification was absorbed into the model itself.</strong>
   </p>
 
   <h2 id="rl-for-uncertainty-training">RL for Uncertainty Training</h2>
   <p>
-    My hypothesis is that the team saw that the model initially showed a promising ability to estimate its own confidence in its reasoning, which led the team to explore ways to bring out this behavior in postraining with RL. This involved developing a novel RL setup: rewarding the model for correct answers with high confidence, and penalizing it when it confidently produces incorrect responses.  A recent paper by researchers at MIT explores such an RL calibration approach in <a href="https://www.arxiv.org/pdf/2507.16806">more detail</a>. This training then likely encouraged the model to engage in deeper reasoning, developing an implicit internal verifier to assess uncertainty which explains why before finalizing an answer.
+    My hypothesis is that the team saw that the model initially showed a promising ability to estimate its own confidence in its reasoning, which led them to explore ways to bring out this behavior in postraining with RL. This involved developing a novel RL setup: rewarding the model for correct answers with high confidence, and penalizing it when it confidently produces incorrect responses. A recent paper by researchers at MIT explores exactly such an RL calibration approach in <a href="https://www.arxiv.org/pdf/2507.16806">more detail</a>. This training then likely encouraged the model to engage in deeper reasoning, developing an implicit internal verifier resulting in these observedartifacts like "Good" or "Seems hard" in the outputs.
   </p>
 
   <h2 id="parallel-thinking">Parallel Thinking and Multi‑Agent Systems</h2>
