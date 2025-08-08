@@ -4,7 +4,7 @@ collection: publications
 category: workshops
 permalink: /publication/2025-easyarc-true-visual-reasoning
 excerpt: "Workshop paper accepted to ViSCALE @ CVPR 2025."
-date: 2025-01-01
+date: 2025-03-28
 venue: "ViSCALE Workshop @ CVPR 2025"
 paperurl: "https://arxiv.org/abs/2506.11595"
 citation: "Unsal, M. & Akkus, A. (2025). EasyARC: Evaluating Vision Language Models on True Visual Reasoning. ViSCALE Workshop @ CVPR 2025."
