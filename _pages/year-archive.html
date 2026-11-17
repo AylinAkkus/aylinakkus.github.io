@@ -8,28 +8,21 @@ redirect_from:
   - /wordpress/blog-posts/
 ---
 
-<main id="main" class="editorial-archive">
-  <header class="editorial-archive__header">
-    <p class="editorial-kicker">The writing desk</p>
-    <h1>Articles<span class="editorial-period">.</span></h1>
-    <p>Longer thoughts on language models, training, reasoning, and whatever else feels worth exploring.</p>
+<main id="main" class="writing-site">
+  <header class="writing-intro writing-intro--archive">
+    <h1>Articles</h1>
+    <p>Essays and notes on language models, training, and reasoning.</p>
   </header>
 
-  <div class="article-list">
+  <div class="writing-posts">
     {% for post in site.posts %}
-    <article class="article-list__item">
-      <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%b %d, %Y' }}</time>
-      <div>
-        <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-        <p>{{ post.description | default: post.excerpt | strip_html | truncatewords: 32 }}</p>
-        {% if post.tags.size > 0 %}<p class="article-list__tags">{{ post.tags | join: ' · ' }}</p>{% endif %}
-      </div>
-      <a class="article-list__arrow" href="{{ post.url | relative_url }}" aria-label="Read {{ post.title | escape }}">↗</a>
+    <article class="writing-post">
+      <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%B %-d, %Y' }}</time>
+      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+      <p>{{ post.description | default: post.excerpt | strip_html | truncatewords: 40 }}</p>
     </article>
     {% else %}
-    <p>The first article is on its way.</p>
+    <p>Articles are coming soon.</p>
     {% endfor %}
   </div>
-
-  <p class="editorial-archive__rss">Prefer a feed? <a href="{{ '/feed.xml' | relative_url }}">Subscribe via RSS ↗</a></p>
 </main>

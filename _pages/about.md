@@ -21,4 +21,4 @@ In my free time I love to explain my research ideas to my (probably tired from c
 
 - EasyARC: Evaluating Vision Language Models on True Visual Reasoning. ViSCALE Workshop @ CVPR 2025. [arXiv](https://arxiv.org/abs/2506.11595)
 
-Feel free to reach out if you share similar interests or have any questions!
+Feel free to reach out if you share similar interests or have any questions: [aylin.g.akkus@gmail.com](mailto:aylin.g.akkus@gmail.com).
