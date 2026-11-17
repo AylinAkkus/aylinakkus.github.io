@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-Hello! I'm Aylin, a graduate student at ETH Zurich, currently working on my thesis with [Prof. Ludwig Schmidt's group](https://people.csail.mit.edu/ludwigs/index.html) at Stanford studying data recipes for training Computer Use Agents. I also contribute to [Project Numina](https://projectnumina.ai/), where I help develop open formal math reasoning models.
+Hello! I'm Aylin, and I work on pretraining at Mistral AI.
 
 ### Latest blog post
 
