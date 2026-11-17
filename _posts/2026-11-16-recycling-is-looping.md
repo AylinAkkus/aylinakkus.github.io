@@ -10,7 +10,7 @@ tags:
   - Protein Folding
 ---
 
-Deep learning runs on a handful of simple ideas that scale with data and compute. And because these methods share a common language of networks, ideas that work for board games or proteins can often be carried over to text. Reasoning models are one example. They bring AlphaZero's recipe to LLMs: spend extra compute at inference and use reinforcement learning to expand states, backtrack, etc.
+Deep learning runs on a handful of simple ideas that scale with data and compute. And because these methods share a common language of networks, ideas that work for board games or proteins can often be carried over to text. Reasoning models are one example. They borrow from AlphaZero's recipe, pairing reinforcement learning with more computation at inference time to explore possible solutions.
 
 Looping is another of these ideas. Looped transformers reuse the same layers several times to buy depth without adding parameters. [AlphaFold 2](https://www.nature.com/articles/s41586-021-03819-2) used a version of this in 2021 under another name: recycling. Now that looping has reached frontier language models, recycling looks less like a protein-folding trick and more like a general principle that was already lying around: spend extra compute by running the same network again on its own output.
 
