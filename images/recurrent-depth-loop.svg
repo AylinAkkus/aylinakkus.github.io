@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" role="img" aria-labelledby="title desc">
+  <title id="title">Recurrent depth in a language model</title>
+  <desc id="desc">An embedding passes through a prelude, a shared core block that repeats, then a coda before the next token is produced.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0 0 9 4.5 0 9" fill="none" stroke="#a74624" stroke-width="1.8"/>
+    </marker>
+  </defs>
+  <rect width="720" height="270" rx="12" fill="#fafafa"/>
+  <g fill="#fff" stroke="#d4d4d4" stroke-width="2">
+    <rect x="20" y="55" width="112" height="86" rx="8"/>
+    <rect x="165" y="55" width="112" height="86" rx="8"/>
+    <rect x="310" y="55" width="112" height="86" rx="8" stroke="#a74624"/>
+    <rect x="455" y="55" width="112" height="86" rx="8"/>
+    <rect x="600" y="55" width="100" height="86" rx="8"/>
+  </g>
+  <g fill="#242424" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="20" font-weight="600" text-anchor="middle">
+    <text x="76" y="104">Embed</text>
+    <text x="221" y="104">Prelude</text>
+    <text x="366" y="104">Core</text>
+    <text x="511" y="104">Coda</text>
+    <text x="650" y="104">Token</text>
+  </g>
+  <g fill="none" stroke="#a74624" stroke-width="3" marker-end="url(#arrow)">
+    <path d="M135 98 H156"/>
+    <path d="M280 98 H301"/>
+    <path d="M425 98 H446"/>
+    <path d="M570 98 H591"/>
+    <path d="M366 147 V198 H300 V147"/>
+  </g>
+  <text x="360" y="239" fill="#8f3414" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17" text-anchor="middle">Repeat core; mix in the original embedding each time</text>
+</svg>
