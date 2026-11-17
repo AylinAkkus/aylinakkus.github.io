@@ -21,8 +21,8 @@ The two paradigms differ in where the thinking happens. Reasoning thinks out lou
 AlphaFold 2 runs its full network, 48 Evoformer blocks plus the structure module, then feeds its own output back in and runs the same weights again. Four passes is the default, so 48 blocks of parameters give 192 blocks of effective depth.
 
 <figure>
-  <img src="{{ '/images/alphafold-recycling.svg' | relative_url }}" alt="AlphaFold 2 runs its network, then recycles its output into the input for another pass.">
-  <figcaption>AlphaFold 2 reuses the same network on a refined input.</figcaption>
+  <a href="{{ '/images/alphafold-recycling.png' | relative_url }}"><img src="{{ '/images/alphafold-recycling.png' | relative_url }}" alt="AlphaFold 2 recycling diagram: the same Evoformer and structure module run again after their outputs feed back into the input."></a>
+  <figcaption>AlphaFold 2 recycling: the output loops back to the input.</figcaption>
 </figure>
 
 The pair representation and first MSA row are layer-normalized; the predicted structure is turned into a binned distance map. All three are added to the input embeddings.
@@ -42,8 +42,8 @@ None of this is confirmed architecture, and frontier labs publish few details. B
 [Geiping et al. (2025)](https://arxiv.org/abs/2502.05171) offer one public version of the idea. A prelude of 2 layers embeds the input, a core block of 4 layers is looped, and a coda of 2 layers reads out the next token.
 
 <figure>
-  <img src="{{ '/images/recurrent-depth-loop.svg' | relative_url }}" alt="A recurrent-depth model passes the hidden state through the same core block repeatedly, mixing in the original embedding at each loop.">
-  <figcaption>A recurrent-depth language model loops the core block before producing a token.</figcaption>
+  <a href="{{ '/images/recurrent-depth-loop.png' | relative_url }}"><img src="{{ '/images/recurrent-depth-loop.png' | relative_url }}" alt="Recurrent-depth model diagram: input tokens pass through a prelude, a looped recurrent block, and a coda before the next token."></a>
+  <figcaption>Recurrent depth: the block's output loops back, mixed with the input embedding.</figcaption>
 </figure>
 
 Each loop mixes the input embedding back in with the previous state. In AlphaFold:
@@ -75,13 +75,19 @@ Crucially, the loop runs within one token. The model refines the same position b
 
 The authors write that recycling contributes markedly to accuracy with only minor extra training time. Their Figure 4 shows where that accuracy comes from.
 
-[View the AlphaFold 2 ablations in Figure 4a](https://www.nature.com/articles/s41586-021-03819-2/figures/4).
+<figure>
+  <a href="{{ '/images/alphafold-ablations.png' | relative_url }}"><img src="{{ '/images/alphafold-ablations.png' | relative_url }}" alt="AlphaFold 2 ablation results comparing GDT on CASP14 domains and lDDT-Cα on PDB chains; removing recycling lowers both scores."></a>
+  <figcaption>AlphaFold 2 ablations (<a href="https://www.nature.com/articles/s41586-021-03819-2/figures/4">Jumper et al. 2021, Fig. 4a</a>).</figcaption>
+</figure>
 
-*AlphaFold 2 ablations ([Jumper et al. 2021](https://www.nature.com/articles/s41586-021-03819-2), Fig. 4a).* Removing recycling costs roughly 3 to 5 GDT on CASP14 domains and about 2 lDDT-Cα on PDB chains.
+Removing recycling costs roughly 3 to 5 GDT on CASP14 domains and about 2 lDDT-Cα on PDB chains.
 
 Easy proteins barely use the loop and hard ones depend on it. Geiping et al. find the same in language: easy benchmarks converge in few loops, math keeps improving with more, and the model scales up to compute equivalent to a 50B-parameter model from 3.5B parameters.
 
-[See Tables 1 and 4 in Geiping et al. (2025)](https://arxiv.org/abs/2502.05171) for the reported benchmark results.
+<figure>
+  <a href="{{ '/images/recurrent-depth-results.png' | relative_url }}"><img src="{{ '/images/recurrent-depth-results.png' | relative_url }}" alt="Line chart showing zero-shot accuracy of a 3.5B recurrent-depth model rising with more loops per token, then flattening around 16 loops."></a>
+  <figcaption>3.5B model, 800B tokens, zero-shot. Data from <a href="https://arxiv.org/abs/2502.05171">Geiping et al. 2025, Tables 1 and 4</a>.</figcaption>
+</figure>
 
 ## Conclusion
 
