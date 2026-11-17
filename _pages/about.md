@@ -1,33 +1,17 @@
 ---
-permalink: /
-title: "Welcome!"
+permalink: /about/
+title: "About"
 author_profile: true
 redirect_from: 
-  - /about/
   - /about.html
 ---
 
 Hello! I'm Aylin, and I work on pretraining at Mistral AI.
 
-### Latest blog post
-
-{% assign published_posts = site.posts | where_exp: "post", "post.date <= site.time" %}
-{% assign latest_post = published_posts | sort: "date" | last %}
-
-{% if latest_post %}
-- **Latest**: [{{ latest_post.title }}]({{ latest_post.url | relative_url }})
-  
-  {{ latest_post.excerpt | default: latest_post.content | strip_html | truncatewords: 40 }}
-  
-  [Read more →]({{ latest_post.url | relative_url }})
-{% else %}
-No posts yet. Check back soon!
-{% endif %}
-
 ### Projects
 
 - **IDE Grounding Kit**: I developed a tool for [automatically generating agent training data](https://github.com/AylinAkkus/IDE-grounding-kit) for the Cursor IDE using its underlying Electron Browser.
-![Bounding Boxes on Cursor Screen]({{ '/images/Cursor_bbox.png' | relative_url }}){: style="max-width: 420px; display: block; margin: 0.5rem auto; height: auto;" }
+![Bounding boxes on a Cursor screen]({{ '/images/Cursor_bbox.png' | relative_url }}){: style="width: 100%; max-width: 420px; display: block; margin: 0.5rem auto; height: auto;" }
 
 ### Personal
 

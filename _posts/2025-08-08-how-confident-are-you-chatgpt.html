@@ -1,7 +1,6 @@
 ---
-layout: single
+layout: article
 title: "How Confident Are You, ChatGPT?"
-author_profile: true
 description: "Why calibration and uncertainty might be at the core of OpenAI's recent reasoning breakthroughs."
 tags:
   - RL
@@ -10,95 +9,6 @@ tags:
 date: 2025-08-08
 excerpt: "<strong>TL;DR:</strong> The key to OpenAI’s IMO gold likely wasn’t a universal verifier. Calibration and uncertainty estimation are central, and will shape future products."
 ---
-
-<style>
-  /* Page-scoped, article-style typography */
-  .feature-article {
-    max-width: 720px;
-    margin: 0 auto;
-    font-family: "Georgia", "Times New Roman", serif;
-    line-height: 1.7;
-    font-size: 1.08rem;
-    color: var(--body-color, #1a1a1a);
-  }
-  .feature-article h1 {
-    font-size: 2.2rem;
-    line-height: 1.2;
-    margin-bottom: 0.4rem;
-    font-weight: 700;
-  }
-  .feature-article .dek {
-    font-size: 1.15rem;
-    color: #444;
-    margin: 0 0 1.25rem;
-  }
-  .feature-article .byline {
-    color: #666;
-    font-size: 0.95rem;
-    margin-bottom: 2rem;
-  }
-  .feature-article .lede {
-    font-size: 1.12rem;
-    margin-top: 1.25rem;
-  }
-  .feature-article .lede:first-letter {
-    float: left;
-    font-size: 3.6rem;
-    line-height: 1;
-    padding-right: 0.35rem;
-    padding-top: 0.18rem;
-    font-weight: 700;
-  }
-  .feature-article blockquote {
-    margin: 1.5rem 0;
-    padding: 0.1rem 1rem;
-    border-left: 3px solid #ccc;
-    color: #333;
-    font-style: italic;
-    background: rgba(0,0,0,0.02);
-  }
-  .feature-article figure {
-    margin: 2rem 0;
-  }
-  .feature-article figure img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 4px;
-  }
-  .feature-article figcaption {
-    font-size: 0.9rem;
-    color: #666;
-    margin-top: 0.5rem;
-    text-align: center;
-  }
-  .feature-article .section-kicker {
-    margin-top: 2.25rem;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: #888;
-    font-weight: 600;
-    font-size: 0.9rem;
-  }
-  .feature-article h2 {
-    font-size: 1.5rem;
-    margin: 1.8rem 0 0.6rem;
-  }
-  .feature-article .pull-quote {
-    font-size: 1.15rem;
-    font-style: italic;
-    color: #333;
-    border-left: 3px solid #222;
-    margin: 2rem 0;
-    padding: 0.1rem 1rem;
-    background: rgba(0,0,0,0.025);
-  }
-  .feature-article a {
-    color: #0056b3;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-</style>
 
 <article class="feature-article">
   <p class="dek"><strong>TL;DR:</strong> I present reasons to doubt that the key to OpenAI’s IMO gold was a universal verifier. Instead, I argue that uncertainty estimation and calibration are central to this research direction and likely to shape future OpenAI products.</p>
@@ -178,7 +88,7 @@ excerpt: "<strong>TL;DR:</strong> The key to OpenAI’s IMO gold likely wasn’t
   <p>
     Another crucial factor in solving the IMO for both OpenAI and DeepMind was scaling up reasoning through parallel computation. This was particularly important as both teams aimed to solve problems under the same 4.5-hour time constraint as human contestants.<br>
     However, since models can run multiple processes simultaneously, comparing against human time is somewhat misleading—what truly matters is the total compute used, a detail neither team disclosed.<br>
-    On the matter of parallel thinking DeepMind highlighted this in their <a href="https://deepmind.google/discover/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/"></a>statement</a>:
+    On the matter of parallel thinking DeepMind highlighted this in their <a href="https://deepmind.google/discover/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/">statement</a>:
 
   </p>
   <blockquote>

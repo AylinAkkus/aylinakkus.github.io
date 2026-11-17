@@ -12,7 +12,7 @@ site_theme               : "default"
 title                    : "Aylin Akkus"
 title_separator          : "-"
 name                     : &name "Aylin Akkus"
-description              : &description "Passionate about understanding the inner workings of large language models"
+description              : &description "Writing about language models, training, and reasoning"
 url                      : https://aylinakkus.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io" or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : ""
 repository               : "AylinAkkus/AylinAkkus.github.io"
@@ -36,7 +36,7 @@ author:
   googlescholar    : "https://scholar.google.com/citations?view_op=list_works&hl=en&user=pM5z6z8AAAAJ"
 
   # Repositories and software development
-  github           : "https://github.com/AylinAkkus" 
+  github           : "AylinAkkus"
 
   # Social media
   twitter          : "Aylin112358"
@@ -201,12 +201,7 @@ defaults:
       path: ""
       type: posts
     values:
-      layout: single
-      author_profile: true
-      read_time: true
-      comments: true
-      share: true
-      related: true
+      layout: article
   # _pages
   - scope:
       path: ""

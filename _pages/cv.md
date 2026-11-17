@@ -26,9 +26,12 @@ Education
 
 Experience
 ======
-- Stanford University — Master Thesis with Prof. Ludwig Schmidt — Feb 2025–Present
-  - Collaborating with Stanford and ETH to create a large-scale open-source multimodal dataset focused on web and computer use
-  - Contributing to data collection, curation, and benchmarking to enable progress in web-scale multimodal learning
+- Mistral AI — Pretraining — Present
+  - Working on language model pretraining
+
+- Stanford University — Master's Thesis with Prof. Ludwig Schmidt — 2025
+  - Collaborated with Stanford and ETH on a large-scale open-source multimodal dataset focused on web and computer use
+  - Contributed to data collection, curation, and benchmarking for web-scale multimodal learning
 
 - Working Student — SEFE Securing Energy for Europe GmbH — Oct 2022–Aug 2023
   - Led a data science project to fully automate initial forecasts of energy consumption for large industrial customers

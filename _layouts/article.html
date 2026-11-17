@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<main id="main" class="editorial-article">
+  <a class="editorial-back" href="{{ '/articles/' | relative_url }}">← All articles</a>
+  <header class="editorial-article__header">
+    <p class="editorial-kicker">Article <span aria-hidden="true">/</span> <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%B %d, %Y' }}</time></p>
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}<p class="editorial-article__dek">{{ page.description }}</p>{% endif %}
+  </header>
+  <div class="editorial-article__body">{{ content }}</div>
+  <footer class="editorial-article__footer">
+    <p>Thanks for reading.</p>
+    <a class="editorial-text-link" href="{{ '/articles/' | relative_url }}">More articles <span aria-hidden="true">↗</span></a>
+  </footer>
+</main>
