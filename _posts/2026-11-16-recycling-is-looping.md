@@ -4,6 +4,7 @@ title: "Recycling is Looping: From Protein Folding to LLMs"
 description: "How AlphaFold's recycling reappears as recurrent depth in language models."
 date: 2026-11-16
 math: true
+x_embed: true
 tags:
   - Language Models
   - Model Architecture
@@ -31,9 +32,10 @@ The pair representation and first MSA row are layer-normalized; the predicted st
 
 In September 2026, The Information reported that OpenAI's Astra uses recurrent depth: the same block runs several times on a token's hidden state before the next token is produced. OpenAI's chief scientist Jakub Pachocki [responded](https://x.com/merettm/status/2095023204993490967) that the depth of the computation graph of their frontier models, including Astra, is within a factor of two of GPT-4.
 
-> "…including Astra, is within a factor of two of GPT-4."
->
-> **Jakub Pachocki** (@merettm), OpenAI chief scientist · [view on X](https://x.com/merettm/status/2095023204993490967)
+<blockquote class="twitter-tweet">
+  <p lang="en" dir="ltr">“The depth of the computation graph for our present frontier models, including Astra, is within a factor of two of GPT-4.”</p>
+  <a href="https://x.com/merettm/status/2095023204993490967">— Jakub Pachocki (@merettm), September 2, 2026</a>
+</blockquote>
 
 He did not deny the looping, he merely gave a bound. Weeks later, a [Microsoft Foundry page](https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-gpt-6-1-sol-in-microsoft-foundry-advanced-intelligence-optimized-for/4560811) described GPT-6.1 Sol as using the same base weights as GPT-6 Sol with two inference passes instead of three, which many read as fewer loops.
 
